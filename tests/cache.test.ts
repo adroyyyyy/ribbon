@@ -72,7 +72,7 @@ test('squeezed, the folded cache stacks as a third block, then takes its own row
   await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
   await $.classic.SessionStart({ source: 'resume', seconds_since_last_response: WARM_IDLE, context_tokens: 770000, model: 'claude-opus-5-5' })
 
-  const half = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: { ...PROPS, bodyColumns: 53 } })
+  const half = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: { ...PROPS, bodyColumns: 90 } })
   expect(await half.find({ key: 'block' })).toBeDefined()
   expect(await half.find({ text: '42m left' })).toBeDefined()
   expect(await half.find({ text: '$0.15' })).toBeDefined()
@@ -114,7 +114,7 @@ test('a cleared session drops the cache until the next reply', async ($, on) => 
   await $.classic.SessionStart({ source: 'resume', seconds_since_last_response: COLD_IDLE, context_tokens: 770000, model: 'claude-opus-5-5' })
   await $.classic.SessionStart({ source: 'clear' })
 
-  const band = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: PROPS })
+  const band = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: { ...PROPS, bodyColumns: 120 } })
   expect(await band.findAll({ type: 'Svg' })).toEqual([])
   expect(await band.find({ text: ' 99% left' })).toBeDefined()
   await band.unmount()

@@ -18,7 +18,7 @@ import type { CacheView } from './cache-art'
 // cold starts open, and a choice holds until the cache flips. Zero token cost:
 // it reads the engine's own figures and draws.
 
-const CELLS = 10
+const CELLS = 8
 const LOW_AT = 15
 const TIGHT_CELLS = 6
 /** How often the band redraws, so the countdown and the warm-to-cold flip stay current. */
@@ -181,7 +181,7 @@ export const register: Register = on => {
     const wide = (w: Window, i: number) => {
       const p = parts(w)
       return (
-        <Box key={`w-${i}`} flexDirection="row" flexShrink={0} marginRight={3}>
+        <Box key={`w-${i}`} flexDirection="row" flexShrink={0} marginRight={2}>
           <Text color={MUTED} bold>{p.name} </Text>
           <Text color={p.col}>{p.d.on}</Text>
           <Text color={EMPTY}>{p.d.off}</Text>
@@ -195,7 +195,7 @@ export const register: Register = on => {
     const stacked = (w: Window, i: number) => {
       const p = parts(w)
       return (
-        <Box key={`w-${i}`} flexDirection="column" flexShrink={0} marginRight={3}>
+        <Box key={`w-${i}`} flexDirection="column" flexShrink={0} marginRight={2}>
           <Box flexDirection="row">
             <Text color={MUTED} bold>{p.name} </Text>
             <Text color={p.col}>{p.d.on}</Text>
