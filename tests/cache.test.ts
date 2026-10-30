@@ -72,7 +72,7 @@ test('squeezed, the folded cache stacks as a third block, then takes its own row
   await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
   await $.classic.SessionStart({ source: 'resume', seconds_since_last_response: WARM_IDLE, context_tokens: 770000, model: 'claude-opus-5-5' })
 
-  const half = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: { ...PROPS, bodyColumns: 90 } })
+  const half = await $.ui.mount({ plugin: 'ribbon', surface: 'desktop', component: 'AbovePrompt', props: { ...PROPS, bodyColumns: 60 } })
   expect(await half.find({ key: 'block' })).toBeDefined()
   expect(await half.find({ text: '42m left' })).toBeDefined()
   expect(await half.find({ text: '$0.15' })).toBeDefined()
